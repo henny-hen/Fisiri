@@ -6,18 +6,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
-
+    public final static int REQUEST_RECORD_AUDIO = 2033;
+    protected TextView text1;
+    protected TextView text2 ;
+    protected Button recordButton ;
+    protected Button stopbutton ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        final TextView text1= findViewById(R.id.title_record);
-        final TextView text2 = findViewById(R.id.title_act);
+          text1= findViewById(R.id.title_record);
+          text2 = findViewById(R.id.title_act);
+          recordButton = findViewById(R.id.buttonrecord);
+          stopbutton = findViewById(R.id.buttonstop);
 
+        stopbutton.setEnabled(false);
 
         Animation fadeinan = AnimationUtils.loadAnimation(this,R.anim.fade_in);
         text1.startAnimation(fadeinan);
@@ -41,5 +49,16 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public void onStartRecording(View view) {
+        recordButton.setEnabled(false);
+        stopbutton.setEnabled(true);
+    }
+
+    public void onStopRecording(View view) {
+        recordButton.setEnabled(true);
+        stopbutton.setEnabled(false);
     }
 }

@@ -44,7 +44,26 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonstop"
+        android:layout_width="153dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="530dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/baloo_bhai_2_medium"
+        android:text="Stop"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonrecord"
         android:layout_width="153dp"
         android:layout_height="65dp"
         android:layout_marginStart="129dp"
