@@ -145,8 +145,25 @@ public class MainActivity2 extends AppCompatActivity {
                 // Creating a multiline string with the filtered results
                 StringBuilder outputStr = new StringBuilder();
                 for (Category category : finalOutput) {
-                    outputStr.append(category.getLabel())
-                            .append(": ").append(category.getScore()).append("\n");
+                    if(category.getLabel().equals("0 Adios")) {
+                        outputStr.append("Bye")
+                                .append(": ").append(category.getScore()).append("\n");
+                    } else if(category.getLabel().equals("2 Hola")) {
+                        outputStr.append("Hello")
+                                .append(": ").append(category.getScore()).append("\n");
+                    } else if(category.getLabel().equals("3 Manzana")) {
+                        outputStr.append("Apple")
+                                .append(": ").append(category.getScore()).append("\n");
+                    } else if(category.getLabel().equals("4 Pera")) {
+                        outputStr.append("Pear")
+                                .append(": ").append(category.getScore()).append("\n");
+                    } else if(category.getLabel().equals("1 Background Noise")) {
+                        outputStr.append("Background Noise")
+                                .append(": ").append(category.getScore()).append("\n");
+                    } else {
+                        outputStr.append("Tree")
+                                .append(": ").append(category.getScore()).append("\n");
+                    }
                 }
 
                 // Updating the UI
