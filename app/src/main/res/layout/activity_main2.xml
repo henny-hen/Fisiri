@@ -61,7 +61,7 @@
         tools:visibility="invisible" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonstop"
         android:layout_width="153dp"
         android:layout_height="65dp"
         android:layout_marginStart="129dp"
@@ -70,6 +70,28 @@
         android:layout_marginBottom="64dp"
         android:background="@drawable/button_background"
         android:fontFamily="@font/baloo_bhai_2_medium"
+        android:onClick="onStopRecording"
+        android:text="Stop"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/buttonrecord"
+        android:layout_width="153dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="530dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/baloo_bhai_2_medium"
+        android:onClick="onStartRecording"
         android:text="Record!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FFFFFF"
@@ -99,4 +121,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.324" />
+
+    <TextView
+        android:id="@+id/specstextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginEnd="319dp"
+        android:layout_marginBottom="481dp"
+        android:text="Specs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/outputtextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="314dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="354dp"
+        android:text="Output"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
