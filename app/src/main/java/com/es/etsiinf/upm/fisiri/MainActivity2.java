@@ -34,6 +34,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected Button stopbutton ;
     protected TextView specsT;
     protected TextView outputT;
+    protected TextView wrongT;
 
 
     private AudioRecord audioRecord;
@@ -41,7 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
     private AudioClassifier audioClassifier;
     private TensorAudio tensorAudio;
 
-    float probabilityThreshold = 0.3f;
+    float probabilityThreshold = 0.5f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,11 @@ public class MainActivity2 extends AppCompatActivity {
           stopbutton = findViewById(R.id.buttonstop);
           specsT = findViewById(R.id.specstextview);
           outputT = findViewById(R.id.outputtextview);
+          wrongT = findViewById(R.id.textwrong);
+          outputT.setVisibility(View.INVISIBLE);
+          stopbutton.setVisibility(View.INVISIBLE);
           stopbutton.setEnabled(false);
+
 
 
 
@@ -147,22 +152,20 @@ public class MainActivity2 extends AppCompatActivity {
                 for (Category category : finalOutput) {
                     if(category.getLabel().equals("0 Adios")) {
                         outputStr.append("Bye")
-                                .append(": ").append(category.getScore()).append("\n");
+                                .append(" ").append("\n");
                     } else if(category.getLabel().equals("2 Hola")) {
                         outputStr.append("Hello")
-                                .append(": ").append(category.getScore()).append("\n");
+                                .append(" ").append("\n");
                     } else if(category.getLabel().equals("3 Manzana")) {
-                        outputStr.append("Apple")
-                                .append(": ").append(category.getScore()).append("\n");
+                        outputStr.append("Apple").append("\n");
                     } else if(category.getLabel().equals("4 Pera")) {
                         outputStr.append("Pear")
-                                .append(": ").append(category.getScore()).append("\n");
+                                .append("\n");
                     } else if(category.getLabel().equals("1 Background Noise")) {
-                        outputStr.append("Background Noise")
-                                .append(": ").append(category.getScore()).append("\n");
+                        outputStr.append("\n");
                     } else {
                         outputStr.append("Tree")
-                                .append(": ").append(category.getScore()).append("\n");
+                                .append(" ").append("\n");
                     }
                 }
 
@@ -171,8 +174,11 @@ public class MainActivity2 extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (finalOutput.isEmpty()) {
-                            outputT.setText("Could not classify");
+                            wrongT.setVisibility(View.VISIBLE);
+                            wrongT.setText("There's too much noise. Try again.");
                         } else {
+                            wrongT.setVisibility(View.INVISIBLE);
+                            outputT.setVisibility(View.VISIBLE);
                             outputT.setText(outputStr.toString());
                         }
                     }
@@ -186,7 +192,8 @@ public class MainActivity2 extends AppCompatActivity {
     public void onStopRecording(View view) {
         recordButton.setVisibility(View.VISIBLE);
         stopbutton.setVisibility(View.INVISIBLE);
-
+        wrongT.setVisibility(View.INVISIBLE);
+        outputT.setVisibility(View.INVISIBLE);
         recordButton.setEnabled(true);
         stopbutton.setEnabled(false);
         timerTask.cancel();
